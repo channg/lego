@@ -1,6 +1,7 @@
 body,html{
     padding: 0;
     margin: 0%;
+    font-family: "Helvetica Neue", helvetica, arial;
 }
 .main-content{
     width: 1000px;
@@ -8,4 +9,37 @@ body,html{
     margin:0 auto;
     margin-top: 100px;
     -moz-box-shadow:1px 6px 19px #333333; -webkit-box-shadow:1px 6px 19px #333333; box-shadow:1px 6px 19px #333333;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-base-dom-css{
+    width: 1000px;
+    margin:0 auto;
+    margin-top: 50px;
+    padding-bottom: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items:end;
+
+
+}
+.main-base-doc{
+    width: 400px;
+    -moz-box-shadow:1px 6px 19px #333333; -webkit-box-shadow:1px 6px 19px #333333; box-shadow:1px 6px 19px #333333;
+    padding: 20px;
+    box-sizing: content-box;
+    white-space: pre;
+    color: #666;
+}
+
+.main-base-css{
+    width: 400px;
+    -moz-box-shadow:1px 6px 19px #333333; -webkit-box-shadow:1px 6px 19px #333333; box-shadow:1px 6px 19px #333333;
+    padding: 20px;
+    box-sizing: content-box;
+    white-space: pre;
+    color: #666;
 }
