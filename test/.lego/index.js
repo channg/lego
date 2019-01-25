@@ -1,3 +1,5 @@
+var style = document.createElement("style");
+
 !(function() {
   function jss(blocks) {
     var css = [];
@@ -32,7 +34,7 @@
 })();
 
 
-;(function () {
+/*;(function () {
   let reg = /(<!--legoStart-->)([\s\S]*)(<!--legoEnd-->)/
   $('.main-base-doc').text($('.main-content').html().replace(reg, function (match, p1, p2) {
     return p2
@@ -40,5 +42,24 @@
   var ss = document.styleSheets[1].cssRules[0].cssText
   ss = ss.split("{").join('{\n    ').split("}").join('}\n').split(';').join(';\n    ')
   $('.main-base-css').text(ss)
-})()
+})()*/
 
+(function () {
+  
+  let reg = /(<!--legoStart-->)([\s\S]*)(<!--legoEnd-->)/
+  $('.main-base-doc').text($('.main-content').html().replace(reg, function (match, p1, p2) {
+    return p2
+  }))
+  $.get('/css',function (data) {
+    $('.main-base-css').text(data)
+    style.type = "text/css";
+    try{
+      style.appendChild(document.createTextNode(data));
+    }catch(ex){
+      style.styleSheet.cssText = data;//针对IE
+    }
+    var head = document.getElementsByTagName("head")[0];
+    head.appendChild(style);
+  })
+  
+})()

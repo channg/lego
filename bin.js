@@ -47,7 +47,7 @@ function readFileOfLegoHtml() {
 }
 
 function logHosts(){
-  console.log('http://localhost:8080'.underline.green)
+  console.log('http://localhost:8081'.underline.green)
 }
 
 
@@ -68,18 +68,14 @@ function replaceMainHtml() {
 
 function runServe() {
   app.use('/', express.static(path.resolve(cwd, './.lego/')))
+  app.get('/css', function (req, res) {
+    res.send(fs.readFileSync(path.resolve(cwd, './lego.css'), 'utf8'))
+  })
   var server = app.listen(8081)
-  console.log('http://localhost:8081/'.red)
+  logHosts()
 }
 
 
-
-function getBin(binName) {
-  return path.resolve(
-    __dirname,
-    `./node_modules/.bin/${binName}${isWin ? '.cmd' : ''}`,
-  );
-}
 
 function watchModel(){
   watch('./', { filter: f => !/.lego/.test(f)},function (evt,name) {
